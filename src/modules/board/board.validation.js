@@ -36,7 +36,7 @@ exports.validationEditBoard = async (req, res, next) => {
     }
   } = req;
 
-  if (!boardId || isNaN(Number(boardId))) next(new Error('Require valid boardId'));
+  if (!boardId || isNaN(Number(boardId))) next(new Error('Require valid boardId, boardId = ', boardId));
   else if (!title) next(new Error('Require title'));
   else if (!content) next(new Error('Require content'));
   else if (!password) next(new Error('Require password'));
@@ -53,22 +53,11 @@ exports.validationEditBoard = async (req, res, next) => {
 };
 
 exports.validationFindBoard = (req, res, next) => {
-  let { query: { writer, cursor } } = req;
+  let { query: { title, writer, cursor } } = req;
 
-  if (!writer) next(new Error('Require writer'));
-  else if (cursor && isNaN(Number(cursor))) next(new Error('Invalid cursor'));;
+  if (cursor && isNaN(Number(cursor))) next(new Error('Invalid cursor'));;
 
-  req.parameters = { writer, cursor };
-  next();
-};
-
-exports.validationDetailBoard = (req, res, next) => {
-  let { query: { writer }, params: { boardId } } = req;
-
-  if (!writer) next(new Error('Require writer'));
-  else if (!boardId || isNaN(Number(boardId))) next(new Error('Require valid boardId'));;
-
-  req.parameters = { writer, boardId: Number(boardId) };
+  req.parameters = { title, writer, cursor };
   next();
 };
 

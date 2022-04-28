@@ -6,18 +6,17 @@ const Sequelize = require('sequelize');
 const config = require('../env');
 
 const sequelize = new Sequelize(config.mysql);
-
+const modulesPath = path.resolve(__dirname, '../modules');
 const entities = {};
 
-const modulesPath = path.resolve(__dirname, '../modules');
-
-
+/** import entity */
 fs.readdirSync(modulesPath).forEach((module) => {
-  let { entityFunc } = require(`${modulesPath}/${module}`);
+  let entityFunc = require(`${modulesPath}/${module}/entity/${module}.entity`);
   const entity = entityFunc(sequelize, Sequelize.DataTypes)
   if (entity) entities[entity.name] = entity;
 });
 
+/** associate entity */
 Object.keys(entities).forEach((entityName) => {
   if (entities[entityName].associate) {
     entities[entityName].associate(entities);

@@ -46,16 +46,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  // model.associate = (models) => {
-  //   model.hasMany(models.challengeReviewComment, {
-  //     foreignKey: 'reviewId',
-  //     sourceKey: 'id',
-  //   });
-  //   model.hasMany(models.report, {
-  //     foreignKey: 'reportId',
-  //     sourceKey: 'id',
-  //   });
-  // };
+  entity.associate = (entities) => {
+    entity.hasMany(entities.comment, {
+      foreignKey: 'boardId',
+      sourceKey: 'boardId',
+    });
+    // model.hasMany(models.report, {
+    //   foreignKey: 'reportId',
+    //   sourceKey: 'id',
+    // });
+  };
 
   return entity;
 };

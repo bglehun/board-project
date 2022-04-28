@@ -3,8 +3,8 @@
 const { env } = process;
 
 module.exports = {
-  PORT: env.NODE_PORT || 4001,
-
+  port: env.NODE_PORT && !isNaN(env.NODE_PORT) ? Number(env.NODE_PORT) : 4001,
+  boardPaginationLimit: env.BOARD_PAGINATION_LIMIT && !isNaN(env.BOARD_PAGINATION_LIMIT) ? Number(env.BOARD_PAGINATION_LIMIT) : 3,
   mysql: {
     username: env.MYSQL_USERNAME || 'root',
     password: env.MYSQL_PASSWORD || 'localhost1!',
@@ -15,9 +15,7 @@ module.exports = {
     pool: {
       min: 1,
       max: 2,
-      idle: 5000,
     },
-    operatorsAliases: false,
-    logging: true,
+    logging: console.log,
   },
 };
