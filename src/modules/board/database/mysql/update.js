@@ -11,7 +11,7 @@ exports.editBoard = async ({ where, values, transaction }) => {
   
     return result;
   } catch (err){
-    console.log('MYSQL ERROR - editBoard error', err);
+    console.log('MYSQL ERROR - 게시글 수정에 실패하였습니다.', err);
     throw new Error(err);
   }
 };

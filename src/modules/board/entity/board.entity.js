@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     'board',
     {
       boardId: {
-        type: DataTypes.INTEGER(16).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -51,10 +51,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'boardId',
       sourceKey: 'boardId',
     });
-    // model.hasMany(models.report, {
-    //   foreignKey: 'reportId',
-    //   sourceKey: 'id',
-    // });
   };
 
   return entity;

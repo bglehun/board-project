@@ -5,18 +5,23 @@ module.exports = (sequelize, DataTypes) => {
     'comment',
     {
       commentId: {
-        type: DataTypes.INTEGER(16).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
       boardId: {
-        type: DataTypes.INTEGER(16).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
       },
       replyId: {
-        type: DataTypes.INTEGER(16).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: true,
+      },
+      dept: {
+        type: DataTypes.INTEGER(2).UNSIGNED,
+        allowNull: false,
+        defaultValue: 1,
       },
       writer: {
         type: DataTypes.STRING(32),
@@ -30,20 +35,20 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: 'comment',
       timestamps: true,
-      indexes: [],
+      indexes: [
+        {
+          name: 'idx_boardId_dept',
+          unique: false,
+          fields: ['boardId', 'dept'],
+        },
+        {
+          name: 'idx_replyId_dept',
+          unique: false,
+          fields: ['replyId', 'dept'],
+        }
+      ],
     },
   );
-
-  entity.associate = (entities) => {
-    entity.belongsTo(entities.board, {
-      foreignKey: 'boardId',
-      targetKey: 'boardId',
-    });
-    // model.hasMany(models.report, {
-    //   foreignKey: 'reportId',
-    //   sourceKey: 'id',
-    // });
-  };
 
   return entity;
 };

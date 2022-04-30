@@ -5,12 +5,12 @@ const { Op } = Sequelize;
 
 const config = require('../../../../env');
 
-exports.findOneBoard = async ({ boardId, password }) => {
+exports.findOneBoard = async (boardId) => {
   try {
-    const result = await board.findOne({ where: { boardId, password }, raw: true } );
+    const result = await board.findOne({ where: { boardId }, raw: true } );
     return result;
   } catch (err){
-    console.log('MYSQL ERROR - findOneBoard error', err);
+    console.log('MYSQL ERROR - 게시글 조회에 실패하였습니다.', err);
     throw new Error(err);
   }
 };
@@ -35,7 +35,7 @@ exports.findAllBoard = async ({ title, writer, cursor }) => {
 
     return result;
   } catch (err){
-    console.log('MYSQL ERROR - findAllBoard error', err);
+    console.log('MYSQL ERROR - 게시글 목록 조회에 실패하였습니다.', err);
     throw new Error(err);
   }
 };
