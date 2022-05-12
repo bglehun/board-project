@@ -30,8 +30,6 @@ docker exec -it mysql bash
 
 mysql -uroot -proot
 
-터미널 종료
-
 --------------------------------------------------------
 
 <서버 실행>
@@ -51,16 +49,12 @@ github 주소: https://github.com/bglehun/board-project.git
 
 * API 테스트는 Swagger Execute를 사용하시면 됩니다.
 
-- DB 스키마 생성 스크립트 (혹시라도 생성 안될 경우를 대비하여 생성 SQL 작성):
-=> CREATE DATABASE IF NOT EXISTS local;
-
-- 게시글 목록 API: 완료
-- 게시글 작성 API: 완료
-- 게시글 수정 API: 완료
-- 게시글 삭제 API: 완료
+- 게시글 목록 API
+- 게시글 작성 API
+- 게시글 수정 API
+- 게시글 삭제 API
 
 - 댓글 목록 API: 완료
 - 댓글 작성 API: 완료
 
 - 게시물 또는 댓글 등록 시 알림 기능 구현
-=> ./src/modules/keyword/keyword.service.js - findKeywordAndSendPush()
