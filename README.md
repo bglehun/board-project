@@ -10,8 +10,6 @@ brew install mysql 명령어로 mysql 설치 후,
 username: root
 password: root
 
-설정 해주시면 됩니다.
-
 자세한 설치 방법은 해당 링크를 참조해주세요. https://truecode-95.tistory.com/182
 
 --------------------------------------------------------
@@ -54,13 +52,11 @@ github 주소: https://github.com/bglehun/board-project.git
 - DB 스키마 생성 스크립트 (혹시라도 생성 안될 경우를 대비하여 생성 SQL 작성):
 => CREATE DATABASE IF NOT EXISTS local;
 
-- 게시글 목록 API: 완료
-- 게시글 작성 API: 완료
-- 게시글 수정 API: 완료
-- 게시글 삭제 API: 완료
+- 게시글 목록 API
+- 게시글 작성 API
+- 게시글 수정 API
+- 게시글 삭제 API
 
-- 댓글 목록 API: 완료
-- 댓글 작성 API: 완료
+- 댓글 목록 API
+- 댓글 작성 API
 
-- 게시물 또는 댓글 등록 시 알림 기능 구현
-=> ./src/modules/keyword/keyword.service.js - findKeywordAndSendPush()
