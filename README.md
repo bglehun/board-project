@@ -1,6 +1,6 @@
 # board-project
 
-Nodejs + express + sequelize를 이용헤 간단한 게시판 구현
+Nodejs + express + sequelize를 이용하여 간단한 게시판 구현
 
 <설치 및 설정법>
 
