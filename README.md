@@ -1,5 +1,7 @@
 # board-project
 
+Nodejs + express + sequelize를 이용헤 간단한 게시판 구현
+
 <설치 및 설정법>
 
 mysql 설치 (Mac m1 기준)
